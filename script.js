@@ -194,3 +194,38 @@ document.getElementById('modal-jadwal').addEventListener('click', function(e) {
         closeJadwal();
     }
 });
+
+// whatsapp.js - Khusus buat ngurusin kirim pesan ke WA
+
+function updateWALinkWithDate(event) {
+    // 1. Ambil elemen-elemen yang dibutuhin
+    const titleElem = document.getElementById('modal-title');
+    const dateElem = document.getElementById('booking-date');
+    const priceElem = document.getElementById('modal-price');
+
+    // 2. Ambil value-nya (dengan fallback kalau data kosong)
+    const tripName = titleElem ? titleElem.innerText : "Trip";
+    const bookingDate = dateElem ? dateElem.value : "";
+    const tripPrice = priceElem ? priceElem.innerText : "Cek Harga";
+    
+    // --- KONFIGURASI ADMIN ---
+    const phone = "6281225147256"; 
+    // -------------------------
+
+    // 3. Validasi: Jika tanggal kosong, stop di sini.
+    if (!bookingDate) {
+        alert("Waduh, tanggalnya belum dipilih nih! Pilih dulu ya biar Admin bisa cek slot. 😊");
+        if (event) event.preventDefault(); 
+        return false;
+    }
+
+    // 4. Rakit pesan otomatis (Format rapi pakai Bold di WA)
+    const message = `Halo Admin July Trip! 👋%0A%0ASaya mau tanya ketersediaan slot untuk:%0A📍 *Paket:* ${tripName}%0A📅 *Rencana Tanggal:* ${bookingDate}%0A💰 *Harga:* Rp ${tripPrice}%0A%0AApakah masih tersedia? Terima kasih!`;
+
+    // 5. EKSEKUSI: Buka WhatsApp langsung di tab baru
+    const waURL = `https://wa.me/${phone}?text=${message}`;
+    window.open(waURL, '_blank');
+
+    // Optional: Mencegah link standar berjalan kalau lo pakai tag <a>
+    if (event) event.preventDefault();
+}
