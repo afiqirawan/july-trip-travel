@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>July-Trip-Travel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* CSS Tambahan biar navigasi ada efek blur */
+        .glass {
+            background: rgba(255, 255, 255, 0.8) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+
+    <style>
+    /* 1. Pengaturan Font & Perhalus Tampilan */
+        body { 
+            font-family: 'Inter', sans-serif; 
+            -webkit-font-smoothing: antialiased; 
+            -moz-osx-font-smoothing: grayscale; 
+            text-rendering: optimizeLegibility;
+        }
+
+        /* 2. Efek Navigasi Blur (Glassmorphism) */
+        .glass {
+            background: rgba(255, 255, 255, 0.8) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* 3. Menghilangkan Scrollbar Tapi Tetap Bisa Geser */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+<body class="bg-[#FFFFFF] text-slate-800">
+
+    <nav class="fixed w-full z-50 bg-white/70 backdrop-blur-md border-b border-white/20 py-3 transition-all duration-300">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="flex justify-between items-center">
+                
+                <div class="flex items-center">
+                    <img src="image/logo.png" 
+                        alt="Logo July Trip Travel" 
+                        class="h-10 md:h-12 w-auto object-contain transition-transform hover:scale-105">
+                </div>
+
+                <div class="hidden sm:flex space-x-6 md:space-x-10 text-[11px] md:text-[13px] font-black uppercase tracking-tighter text-slate-900">
+                    <a href="#paket-trip" class="hover:text-orange-500 transition-colors">Paket Trip</a>
+                    <a href="#testimoni" class="hover:text-orange-500 transition-colors">Testimoni</a>
+                    <a href="#faq" class="hover:text-orange-500 transition-colors">FAQ</a>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <a href="#paket-trip" class="bg-orange-500 text-white px-4 md:px-6 py-2 rounded-xl text-[11px] md:text-sm font-black hover:bg-slate-900 hover:shadow-orange-500/20 transition-all shadow-xl active:scale-95 tracking-tight">
+                        BOOKING SEKARANG
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative h-screen flex items-center justify-center overflow-hidden bg-slate-900">
+    
+        <div class="absolute inset-0">
+            <img src="image/hero.png" 
+                alt="Background Pulau Seribu" 
+                class="w-full h-full object-cover opacity-60"> 
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-slate-900"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-6">
+            
+            <h1 data-aos="fade-up" 
+                class="text-5xl md:text-8xl font-black text-white leading-[0.9] mb-6 drop-shadow-2xl tracking-tighter">
+                HEALING ANTI <span class="text-orange-500 italic">RIBET.</span><br> 
+                <span class="text-3xl md:text-5xl font-bold tracking-tight text-slate-200">Bawa Diri, Sisanya Biar Kami.</span>
+            </h1>
+
+            <p data-aos="fade-up" 
+                data-aos-delay="300" 
+                class="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-medium drop-shadow-lg leading-relaxed">
+                Dari transportasi, makan, sampai dokumentasi <span class="text-white font-bold">iPhone & Drone</span>, July Trip yang urus. Kamu tinggal duduk manis nikmati sunset!
+            </p>
+
+            <div data-aos="zoom-in" 
+                data-aos-delay="600" 
+                class="flex flex-col md:flex-row gap-4 justify-center items-center mt-10"> 
+                
+                <div data-aos="zoom-in" 
+                data-aos-delay="600" 
+                class="flex flex-col md:flex-row gap-5 justify-center items-center px-6 mt-10 relative z-10"> <button onclick="openJadwal()" 
+                        class="w-full md:w-auto bg-blue-600 text-white px-8 py-4 rounded-xl font-extrabold text-lg hover:bg-blue-700 transition-all duration-300 shadow-xl shadow-blue-600/30">
+                    Cek Jadwal Trip
+                </button>
+
+                <a href="#paket-trip" 
+                    class="w-full md:w-auto bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-4 rounded-2xl font-black text-lg hover:bg-white/20 transition-all duration-300 shadow-lg active:scale-95">
+                    LIHAT KATALOG
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6 text-center mb-12">
+            <h2 class="text-3xl font-black text-gray-800 tracking-tighter">Kenapa Bersama July Trip?</h2>
+            <div class="w-20 h-1.5 bg-blue-600 mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-6 max-w-6xl mx-auto">
+            <div class="p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:shadow-2xl hover:shadow-blue-600/10 transition-all duration-300 group">
+                <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 text-2xl mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-3">Terpercaya & Legal</h3>
+                <p class="text-gray-500 leading-relaxed text-sm">Sudah melayani ribuan peserta dengan pelayanan standar PT. Liburan tenang tanpa drama.</p>
+            </div>
+
+            <div class="p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:shadow-2xl hover:shadow-blue-600/10 transition-all duration-300 group">
+                <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 text-2xl mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-3">Dokumentasi Premium</h3>
+                <p class="text-gray-500 leading-relaxed text-sm">Nggak perlu pusing cari angle. Tim kami siap ambil foto/video estetik buat stok konten kamu.</p>
+            </div>
+
+            <div class="p-8 rounded-3xl bg-gray-50 border border-gray-100 hover:shadow-2xl hover:shadow-blue-600/10 transition-all duration-300 group">
+                <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 text-2xl mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <i class="fas fa-check-double"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-3">Pelayanan Lengkap</h3>
+                <p class="text-gray-500 leading-relaxed text-sm">Tiket kapal, makan, alat snorkeling, hingga local guide—semua sudah kami siapkan.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="paket-trip" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4">
+            
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-6xl font-black mb-4 tracking-tighter text-slate-900 uppercase">
+                    DAFTAR <span class="text-orange-500">TRIP TERSEDIA</span>
+                </h2>
+                <p class="text-slate-600 font-medium max-w-xl mx-auto italic">
+                    Cek paketnya, pilih tanggalnya, sisanya biar kami yang urus!
+                </p>
+            </div>
+
+            <div class="relative w-full overflow-hidden">
+
+                <div class="absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none md:hidden"></div>
+                
+                <div id="trip-container" class="flex flex-nowrap overflow-x-auto snap-x snap-mandatory no-scrollbar space-x-6 px-6 pb-10 md:flex-wrap md:justify-center md:space-x-0 md:gap-10">
+
+                    <div class="trip-card group flex flex-col bg-white rounded-[2rem] overflow-hidden shadow-lg border border-slate-100 w-[350px] min-h-[640px] h-auto transition-all duration-500 hover:shadow-[0_25px_50px_rgba(249,115,22,0.15)] antialiased flex-shrink-0 snap-center md:snap-align-none" data-category="open" data-aos="fade-up">
+
+                        <div class="relative w-full aspect-video overflow-hidden flex-shrink-0">
+                            <img src="image/kartu1.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Pulau Pari">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                            <div class="absolute top-5 left-5 bg-orange-500 backdrop-blur-md text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase italic tracking-[0.15em] shadow-lg">
+                                Best Seller
+                            </div>
+                        </div>
+
+                        <div class="p-7 pb-8 flex flex-col flex-grow">
+                            <div class="flex-grow">
+                                <h3 class="text-2xl font-black text-slate-900 mb-1 tracking-tighter antialiased leading-tight">
+                                    Open Trip Pulau Pari
+                                </h3>
+                                <p class="text-[10px] text-orange-600 uppercase tracking-[0.2em] mb-6 font-black antialiased">
+                                    Partner Trip Terpercaya
+                                </p>
+
+                                <ul class="text-[12px] text-slate-700 space-y-3 mb-5 antialiased">
+                                    <li class="flex items-center gap-2">
+                                        <span class="flex-shrink-0 text-[14px]">⛱️</span> 
+                                        <span><b class="text-slate-900 font-bold">Pantai Perawan</b> <span class="text-slate-400 text-[10px]">(Canoeing)</span></span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <span class="flex-shrink-0 text-[14px]">🚲</span> 
+                                        <span><b class="text-slate-900 font-bold">Sepeda Santai</b> <span class="text-slate-400 text-[10px]">(Keliling Pulau)</span></span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <span class="flex-shrink-0 text-[14px]">🤿</span> 
+                                        <span><b class="text-slate-900 font-bold">Snorkeling</b> <span class="text-slate-400 text-[10px]">(Bintang Rama)</span></span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <span class="flex-shrink-0 text-[14px]">🌅</span> 
+                                        <span><b class="text-slate-900 font-bold">Pantai Bintang</b> <span class="text-slate-400 text-[10px]">(Sunset)</span></span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <span class="flex-shrink-0 text-[14px]">🍱</span> 
+                                        <span><b class="text-slate-900 font-bold">Makan 3x</b> <span class="text-slate-400 text-[10px]">(Catering Lokal)</span></span>
+                                    </li>
+                                    <li class="flex items-center gap-2 pt-3 border-t border-dashed border-slate-200">
+                                        <span class="flex-shrink-0 text-[14px]">📸</span> 
+                                        <span class="text-orange-600 font-black italic text-[11px]">DOKUMENTASI iPHONE & DRONE!</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <span class="flex-shrink-0 text-[14px]">🎁</span> 
+                                        <span class="text-blue-600 font-black italic text-[11px]">FREE GOODIE BAG INSTAPERFECT!</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="mt-auto pt-5 border-t border-slate-50 flex justify-between items-center">
+                                <div class="flex flex-col">
+                                    <p class="text-[10px] text-slate-400 uppercase font-black tracking-widest mb-0.5 antialiased">Mulai Dari</p>
+                                    <div class="flex items-baseline gap-1">
+                                        <span class="text-slate-900 text-sm font-bold">Rp</span>
+                                        <span class="text-2xl font-black text-orange-600 tracking-tighter antialiased">390.000</span>
+                                    </div>
+                                    <p class="text-[9px] text-slate-400 font-bold mt-0.5 antialiased uppercase tracking-tighter">/pax (Open Trip)</p>
+                                </div>
+                                
+                                <button onclick="openModal('harapan')" class="bg-orange-500 text-white px-4 py-2 rounded-lg">
+                                    Lihat Detail
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="trip-card group flex flex-col bg-white rounded-[2rem] overflow-hidden shadow-lg border border-slate-100 w-[350px] min-h-[640px] h-auto transition-all duration-500 hover:shadow-[0_25px_50px_rgba(249,115,22,0.15)] antialiased flex-shrink-0 snap-center md:snap-align-none" data-category="private" data-aos="fade-up">
+        
+                        <div class="relative w-full aspect-video overflow-hidden flex-shrink-0">
+                            <img src="image/kartu6.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Private Harapan">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                            <div class="absolute top-5 left-5 bg-orange-500 backdrop-blur-md text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase italic tracking-[0.15em] shadow-lg">
+                                Best Seller
+                            </div>
+                        </div>
+
+                        <div class="p-7 flex flex-col flex-grow">
+                            <div class="flex-grow">
+                                <h3 class="text-2xl font-black text-slate-900 mb-1 tracking-tighter antialiased leading-tight uppercase">
+                                    Open Trip Pulau Harapan
+                                </h3>
+                                <p class="text-[10px] text-orange-600 uppercase tracking-[0.2em] mb-6 font-black antialiased">
+                                    The Most Popular Choice
+                                </p>
+
+                                <ul class="text-[12px] text-slate-700 space-y-2.5 mb-5 antialiased">
+                                    <li class="flex items-center gap-2">
+                                        <span class="flex-shrink-0 text-[14px]">🐬</span> 
+                                        <span><b class="text-slate-900 font-bold">Island Hopping</b> <span class="text-slate-400 text-[10px]">(Dolphin & Bulat)</span></span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <span class="flex-shrink-0 text-[14px]">🤿</span> 
+                                        <span><b class="text-slate-900 font-bold">Snorkeling Spot</b> <span class="text-slate-400 text-[10px]">(P. Macan / Bira)</span></span>
+                                    </li>
+                                    <li class="flex items-center gap-2 border-b border-dashed border-slate-100 pb-2">
+                                        <span class="flex-shrink-0 text-[14px]">🏠</span> 
+                                        <span><b class="text-slate-900 font-bold">Homestay AC</b> <span class="text-slate-400 text-[10px]">(Nyaman & Bersih)</span></span>
+                                    </li>
+                                    <li class="flex items-center gap-2 pt-1">
+                                        <span class="flex-shrink-0 text-[14px]">📸</span> 
+                                        <span class="text-orange-600 font-black italic text-[11px]">DOKUMENTASI iPHONE & DRONE!</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <span class="flex-shrink-0 text-[14px]">🔥</span> 
+                                        <span class="text-blue-600 font-black italic text-[11px]">BONUS BBQ MALAM & FUN GAMES!</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="mt-auto pt-5 border-t border-slate-50 flex justify-between items-center">
+                                <div class="flex flex-col">
+                                    <p class="text-[10px] text-slate-400 uppercase font-black tracking-widest mb-0.5 antialiased">Mulai Dari</p>
+                                    <div class="flex items-baseline gap-1">
+                                        <span class="text-slate-900 text-sm font-bold">Rp</span>
+                                        <span class="text-2xl font-black text-orange-600 tracking-tighter antialiased">400.000</span>
+                                    </div>
+                                    <p class="text-[9px] text-slate-400 font-bold mt-0.5 antialiased uppercase tracking-tighter">/pax (Open Trip)</p>
+                                </div>
+                                
+                                <button onclick="openModal('harapan')" class="bg-orange-500 text-white px-4 py-2 rounded-lg">
+                                    Lihat Detail
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="trip-card group flex flex-col bg-white rounded-[2rem] overflow-hidden shadow-lg border border-slate-100 w-[350px] min-h-[640px] h-auto transition-all duration-500 hover:shadow-[0_25px_50px_rgba(249,115,22,0.15)] antialiased flex-shrink-0 snap-center md:snap-align-none" data-category="private" data-aos="fade-up">
+
+                        <div class="relative w-full aspect-video overflow-hidden flex-shrink-0">
+                            <img src="image/kartu4.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Private Marina Ancol">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                            <div class="absolute top-5 left-5 bg-orange-600 backdrop-blur-md text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase italic tracking-[0.15em] shadow-lg">
+                                Speedboat Express
+                            </div>
+                        </div>
+
+                        <div class="p-7 flex flex-col flex-grow">
+                            <div class="flex-grow">
+                                <h3 class="text-2xl font-black text-slate-900 mb-1 tracking-tighter antialiased leading-tight uppercase">
+                                    Premium Trip Pulau Harapan
+                                </h3>
+                                <p class="text-[10px] text-orange-600 uppercase tracking-[0.2em] mb-6 font-black antialiased">
+                                    Via Marina Ancol (Fast Access)
+                                </p>
+
+                                <ul class="text-[12px] text-slate-700 space-y-2.5 mb-5 antialiased">
+                                    <li class="flex items-center gap-2">
+                                        <span class="flex-shrink-0 text-[14px]">🚤</span> 
+                                        <span><b class="text-slate-900 font-bold">Speedboat PP</b> <span class="text-slate-400 text-[10px]">(Cuma 1.5 Jam)</span></span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <span class="flex-shrink-0 text-[14px]">🐬</span> 
+                                        <span><b class="text-slate-900 font-bold">Island Hopping</b> <span class="text-slate-400 text-[10px]">(Jelajah Pulau Eksklusif)</span></span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <span class="flex-shrink-0 text-[14px]">🏠</span> 
+                                        <span><b class="text-slate-900 font-bold">VIP Homestay</b> <span class="text-slate-400 text-[10px]">(Fasilitas Terbaik)</span></span>
+                                    </li>
+                                    <li class="flex items-center gap-2 border-b border-dashed border-slate-100 pb-2">
+                                        <span class="flex-shrink-0 text-[14px]">🍽️</span> 
+                                        <span><b class="text-slate-900 font-bold">Makan Prasmanan</b> <span class="text-slate-400 text-[10px]">(Menu Spesial)</span></span>
+                                    </li>
+                                    <li class="flex items-center gap-2 pt-1">
+                                        <span class="flex-shrink-0 text-[14px]">📸</span> 
+                                        <span class="text-orange-600 font-black italic text-[11px]">DOKUMENTASI iPHONE & DRONE!</span>
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <span class="flex-shrink-0 text-[14px]">🎁</span> 
+                                        <span class="text-blue-600 font-black italic text-[11px]">BONUS 1 PULAU EKSTRA!</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="mt-auto pt-5 border-t border-slate-50 flex justify-between items-center">
+                                <div class="flex flex-col">
+                                    <p class="text-[10px] text-slate-400 uppercase font-black tracking-widest mb-0.5 antialiased">Mulai Dari</p>
+                                    <div class="flex items-baseline gap-1">
+                                        <span class="text-slate-900 text-sm font-bold">Rp</span>
+                                        <span class="text-2xl font-black text-orange-600 tracking-tighter antialiased">850.000</span>
+                                    </div>
+                                    <p class="text-[9px] text-slate-400 font-bold mt-0.5 antialiased uppercase tracking-tighter">/pax (Open Trip)</p>
+                                </div>
+                                
+                                <button onclick="openModal('private-harapan-speedboat')" class="bg-slate-900 hover:bg-orange-500 text-white px-6 py-4 rounded-2xl text-[11px] font-black uppercase tracking-widest transition-all duration-300 shadow-xl shadow-slate-200 active:scale-95 antialiased">
+                                    Detail
+                                </button>
+                            </div>
+                        </div>
+                    </div> 
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="modal-detail" class="fixed inset-0 z-[999] hidden bg-black/60 backdrop-blur-sm items-center justify-center p-4">
+        <div class="bg-white w-full max-w-4xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col animate-in fade-in zoom-in duration-300">
+            
+            <div class="relative h-48 md:h-64 flex-shrink-0">
+                <img id="modal-img" src="" class="w-full h-full object-cover">
+                <button onclick="closeModal()" class="absolute top-4 right-4 bg-black/50 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-orange-500 transition z-[1000]">✕</button>
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 p-6">
+                    <div id="modal-badge" class="mb-2 w-fit bg-orange-500 text-[10px] font-black px-3 py-1 rounded-full text-white uppercase italic tracking-widest"></div>
+                    <h2 id="modal-title" class="text-2xl md:text-3xl font-black text-white uppercase tracking-tighter"></h2>
+                </div>
+            </div>
+
+            <div class="overflow-y-auto p-6 md:p-8 custom-scrollbar flex-grow">
+                <div id="duration-container" class="flex gap-2 mb-8 border-b border-slate-100 pb-4">
+                    <div class="px-6 py-2 rounded-xl bg-slate-900 text-white text-xs font-black shadow-lg shadow-slate-200 uppercase tracking-tighter">
+                        Paket 2 Hari 1 Malam
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div>
+                        <h3 class="font-black text-slate-900 text-lg mb-5 flex items-center gap-3 uppercase tracking-tighter">
+                            <span class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center text-sm">📍</span> 
+                            Fasilitas Trip
+                        </h3>
+                        <ul id="modal-facilities" class="space-y-3 text-slate-600 text-sm font-medium">
+                            </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="font-black text-slate-900 text-lg mb-5 flex items-center gap-3 uppercase tracking-tighter text-gray-800">
+                            <span class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-sm">🕒</span> 
+                            Jadwal Kegiatan
+                        </h3>
+                        
+                        <div class="flex gap-2 mb-8 p-1.5 bg-slate-100 rounded-2xl w-fit">
+                            <button onclick="switchDay(1)" id="btn-day1" class="px-8 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all">Day 1</button>
+                            <button onclick="switchDay(2)" id="btn-day2" class="px-8 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all">Day 2</button>
+                        </div>
+
+                        <div id="modal-itinerary" class="space-y-6 border-l-2 border-orange-100 ml-4 pl-8 relative">
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-6 bg-slate-50 border-t border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <span class="text-xs font-black text-slate-400 uppercase tracking-widest italic">Konsultasi Gratis:</span>
+                    <a href="https://wa.me/your-number" class="text-slate-900 font-black hover:text-orange-500 transition-colors underline decoration-orange-500 decoration-2 underline-offset-4">Tanya Admin Via WhatsApp</a>
+                </div>
+                <button onclick="closeModal()" class="w-full md:w-auto bg-orange-500 hover:bg-slate-900 text-white px-10 py-4 rounded-2xl font-black text-sm uppercase tracking-widest transition-all shadow-lg active:scale-95">
+                    Booking Sekarang
+                </button>
+            </div>
+        </div>
+    </div>
+
+            <div id="modal-detail" class="fixed inset-0 z-[999] hidden bg-black/60 backdrop-blur-sm items-center justify-center p-4">
+                <div class="bg-white w-full max-w-4xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col">
+                    
+                    <div class="relative h-48 md:h-64 flex-shrink-0">
+                        <img id="modal-img" src="" class="w-full h-full object-cover">
+                        <button onclick="closeModal()" class="absolute top-4 right-4 bg-black/50 text-white w-10 h-10 rounded-full z-[1000]">✕</button>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 p-6">
+                            <div id="modal-badge" class="mb-2 w-fit bg-orange-500 text-[10px] font-black px-3 py-1 rounded-full text-white uppercase italic"></div>
+                            <h2 id="modal-title" class="text-2xl md:text-3xl font-black text-white uppercase"></h2>
+                        </div>
+                    </div>
+
+                    <div class="overflow-y-auto p-6 md:p-8 flex-grow custom-scrollbar">
+                        <div class="grid md:grid-cols-2 gap-10">
+                            <div>
+                                <h3 class="font-black text-slate-900 text-lg mb-5 uppercase">📍 Fasilitas Trip</h3>
+                                <ul id="modal-facilities" class="space-y-3 text-slate-600 text-sm font-medium"></ul>
+                            </div>
+                            <div>
+                                <h3 class="font-black text-slate-900 text-lg mb-5 uppercase">🕒 Jadwal Kegiatan</h3>
+                                <div id="modal-itinerary" class="space-y-6 border-l-2 border-orange-100 ml-4 pl-8 relative"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 md:p-8 bg-slate-50 border-t border-slate-100 flex flex-col gap-6">
+                        
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-[0.15em] ml-1">
+                                Rencana Keberangkatan:
+                            </label>
+                            <input type="date" id="booking-date" 
+                                class="w-full p-3 rounded-xl border border-slate-200 text-sm font-bold text-slate-700 outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all shadow-sm">
+                        </div>
+
+                        <div class="flex flex-col md:flex-row justify-between items-center gap-5">
+                            <div class="text-center md:text-left">
+                                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-0.5">Harga Mulai Dari</p>
+                                <div class="flex items-baseline gap-1 justify-center md:justify-start">
+                                    <span class="text-slate-900 text-sm font-bold">Rp</span>
+                                    <p id="modal-price" class="text-3xl font-black text-orange-600 tracking-tighter italic"></p>
+                                </div>
+                            </div>
+
+                            <a id="modal-wa-link" href="#" target="_blank" onclick="updateWALinkWithDate(event)" 
+                                class="w-full md:w-auto bg-green-500 hover:bg-slate-900 text-white px-8 py-4 rounded-2xl font-black text-[12px] uppercase tracking-[0.1em] flex items-center justify-center gap-3 transition-all duration-300 shadow-xl active:scale-95">
+                                <span class="text-xl">📲</span> Hubungi Admin via WhatsApp
+                            </a>
+                        </div>
+                    </div> 
+                </div> 
+            </div>
+
+    <section id="testimoni" class="py-24 bg-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-64 h-64 bg-orange-50 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-50"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-black text-slate-900 mb-4 tracking-tighter uppercase">Apa Kata Mereka?</h2>
+                <div class="w-20 h-1.5 bg-orange-500 mx-auto mb-6 rounded-full"></div>
+                <p class="text-slate-500 font-medium">Ribuan tamu sudah liburan seru bareng <span class="text-orange-600 font-bold">July Trip</span></p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-slate-50 p-8 rounded-[2rem] border border-slate-100 transition-all duration-300 hover:bg-white hover:shadow-2xl hover:shadow-orange-100 group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex text-orange-400 mb-6 text-sm">
+                        <span>★★★★★</span>
+                    </div>
+                    <p class="text-slate-700 italic mb-8 leading-relaxed">"Pelayanannya mantap banget! Tour guidenya sabar, dokumentasi underwater-nya jernih. Liburan ke Pulau Harapan jadi nggak terlupakan!"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-orange-500 rounded-2xl flex items-center justify-center font-black text-white shadow-lg rotate-3 group-hover:rotate-0 transition-transform">R</div>
+                        <div>
+                            <h4 class="font-black text-slate-900 leading-none mb-1">Rizky Ramadhan</h4>
+                            <p class="text-[10px] text-orange-600 uppercase font-black tracking-widest">Open Trip Pulau Harapan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-[2rem] border border-slate-100 transition-all duration-300 hover:bg-white hover:shadow-2xl hover:shadow-orange-100 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex text-orange-400 mb-6 text-sm">
+                        <span>★★★★★</span>
+                    </div>
+                    <p class="text-slate-700 italic mb-8 leading-relaxed">"Booking via web gampang banget. Respons admin WA cepet. Fasilitas homestay-nya bersih dan AC dingin. Rekomen buat keluarga!"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-slate-900 rounded-2xl flex items-center justify-center font-black text-white shadow-lg -rotate-3 group-hover:rotate-0 transition-transform">S</div>
+                        <div>
+                            <h4 class="font-black text-slate-900 leading-none mb-1">Siti Aminah</h4>
+                            <p class="text-[10px] text-orange-600 uppercase font-black tracking-widest">Private Trip Pulau Pari</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-[2rem] border border-slate-100 transition-all duration-300 hover:bg-white hover:shadow-2xl hover:shadow-orange-100 group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex text-orange-400 mb-6 text-sm">
+                        <span>★★★★★</span>
+                    </div>
+                    <p class="text-slate-700 italic mb-8 leading-relaxed">"Barbeque-nya juara! Ikan bakarnya seger banget. Gak nyesel pilih paket Premium, view sunset-nya bener-bener juara dunia."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center font-black text-orange-600 shadow-sm rotate-6 group-hover:rotate-0 transition-transform">A</div>
+                        <div>
+                            <h4 class="font-black text-slate-900 leading-none mb-1">Andi Wijaya</h4>
+                            <p class="text-[10px] text-orange-600 uppercase font-black tracking-widest">Premium Speedboat Trip</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-24 bg-slate-50 relative overflow-hidden">
+        <div class="absolute bottom-0 right-0 w-80 h-80 bg-orange-100/50 rounded-full blur-3xl -mb-40 -mr-40"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-black text-slate-900 mb-4 tracking-tighter uppercase">Pertanyaan Umum (FAQ)</h2>
+                <div class="w-20 h-1.5 bg-orange-500 mx-auto mb-6 rounded-full"></div>
+                <p class="text-slate-500 font-medium">Semua yang perlu Kamu tahu sebelum berangkat bareng <span class="text-orange-600 font-bold">July Trip</span></p>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="bg-white border border-slate-200 rounded-[1.5rem] overflow-hidden transition-all duration-300 hover:border-orange-200" data-aos="fade-up">
+                    <details class="group">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-black text-slate-800 uppercase tracking-tight text-sm md:text-base">
+                                Cara pesen tripnya gimana min?
+                            </span>
+                            <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-open:bg-orange-500 group-open:text-white transition-all duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-50 pt-4 bg-orange-50/30 font-medium italic">
+                            Gampang banget! Kamu tinggal klik tombol <span class="text-orange-600 font-bold">"Booking via WA"</span> di detail paket yang kamu mau. Nanti otomatis diarahkan ke admin July Trip buat isi formulir booking kilat.
+                        </div>
+                    </details>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-[1.5rem] overflow-hidden transition-all duration-300 hover:border-orange-200" data-aos="fade-up" data-aos-delay="100">
+                    <details class="group">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-black text-slate-800 uppercase tracking-tight text-sm md:text-base">
+                                Kalo tiba-tiba cuaca buruk gimana?
+                            </span>
+                            <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-open:bg-orange-500 group-open:text-white transition-all duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-50 pt-4 bg-orange-50/30 font-medium italic">
+                            Keamanan kamu prioritas nomor satu. Kalo pihak Syahbandar melarang keberangkatan karena cuaca, kita bakal infoin buat <span class="text-orange-600 font-bold">reschedule</span> atau penyesuaian jadwal demi keselamatan bersama.
+                        </div>
+                    </details>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-[1.5rem] overflow-hidden transition-all duration-300 hover:border-orange-200" data-aos="fade-up" data-aos-delay="200">
+                    <details class="group">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-black text-slate-800 uppercase tracking-tight text-sm md:text-base">
+                                Perlu bawa alat snorkeling sendiri?
+                            </span>
+                            <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 group-open:bg-orange-500 group-open:text-white transition-all duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-50 pt-4 bg-orange-50/30 font-medium italic">
+                            Nggak perlu ribet! Semua paket <span class="text-orange-600 font-bold">July Trip</span> sudah termasuk pinjaman alat snorkeling (masker + snorkel) dan pelampung yang bersih & standar keamanan.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white border-t border-slate-50 relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-orange-500 to-transparent"></div>
+
+        <div class="container mx-auto px-4 text-center" data-aos="zoom-in">
+            <div class="relative inline-block group">
+                <img src="image/logo2.png" alt="July Trip Logo" 
+                    class="mx-auto h-32 md:h-44 w-auto grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-105 group-hover:drop-shadow-2xl">
+            </div>
+            
+            <div class="mt-10">
+                <h3 class="text-lg md:text-xl font-black text-slate-300 tracking-[0.3em] uppercase italic leading-relaxed">
+                    Explore the <span class="text-orange-500/50 group-hover:text-orange-500 transition-colors duration-500">Islands</span>, 
+                    Create <span class="text-orange-500/50 group-hover:text-orange-500 transition-colors duration-500">Memories</span>
+                </h3>
+                
+                <div class="flex justify-center items-center gap-4 mt-8 opacity-20">
+                    <div class="w-12 h-px bg-slate-900"></div>
+                    <div class="w-2 h-2 rounded-full bg-orange-500"></div>
+                    <div class="w-12 h-px bg-slate-900"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-950 text-white py-12 border-t border-white/5">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-10">
+                
+                <div class="text-center md:text-left" data-aos="fade-right">
+                    <h4 class="text-2xl font-black tracking-[0.1em] uppercase mb-2 italic">
+                        July <span class="text-orange-500 text-sm tracking-widest not-italic">Trip</span>
+                    </h4>
+                    <p class="text-slate-500 text-[11px] font-bold uppercase tracking-widest">
+                        © 2026 July Trip. All Rights Reserved.
+                    </p>
+                    <div class="flex items-center justify-center md:justify-start gap-2 mt-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span>
+                        <p class="text-[10px] text-slate-600 font-bold uppercase tracking-[0.2em]">Sobat Liburan Pulau Seribu Terbaikmu.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-5" data-aos="fade-left">
+                    <a href="https://instagram.com/username_lu" target="_blank" 
+                        class="w-12 h-12 rounded-2xl bg-gray-900 flex items-center justify-center border border-white/5 hover:border-pink-500/50 hover:text-pink-500 transition-all duration-500 group shadow-xl">
+                        <i class="fab fa-instagram text-xl group-hover:scale-110 group-hover:rotate-6"></i>
+                    </a>
+
+                    <a href="https://tiktok.com/@username_lu" target="_blank" 
+                        class="w-12 h-12 rounded-2xl bg-gray-900 flex items-center justify-center border border-white/5 hover:border-cyan-400/50 hover:text-cyan-400 transition-all duration-500 group shadow-xl">
+                        <i class="fab fa-tiktok text-xl group-hover:scale-110 group-hover:-rotate-6"></i>
+                    </a>
+
+                    <a href="mailto:email_lu@gmail.com" 
+                        class="w-12 h-12 rounded-2xl bg-gray-900 flex items-center justify-center border border-white/5 hover:border-orange-500/50 hover:text-orange-500 transition-all duration-500 group shadow-xl">
+                        <i class="fas fa-envelope text-xl group-hover:scale-110"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    AOS.init({
+        duration: 1000, // Kecepatan animasi (1 detik)
+        once: false,    // Animasi muncul lagi tiap di-scroll ulang
+        offset: 100     // Animasi mulai pas elemen berjarak 100px dari bawah layar
+    });
+    </script>
+
+    <div id="modal-jadwal" class="fixed inset-0 z-[1000] hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md transition-all duration-300">
+        <div class="bg-white rounded-[2.5rem] w-full max-w-lg overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300 relative" id="modal-content">
+            
+            <div class="relative h-44 w-full overflow-hidden">
+                <img src="image/hero.png" class="w-full h-full object-cover" alt="Dekorasi Modal">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
+                
+                <div class="absolute bottom-5 left-8">
+                    <h3 class="text-2xl font-black text-white italic tracking-tighter uppercase">Jadwal Open Trip 2026</h3>
+                    <p class="text-orange-400 text-[10px] font-black uppercase tracking-[0.3em]">July Trip Official Schedule</p>
+                </div>
+
+                <button onclick="closeJadwal()" class="absolute top-5 right-5 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-orange-500 text-white backdrop-blur-md transition-all active:scale-90 z-10">
+                    ✕
+                </button>
+            </div>
+
+            <div class="p-8 max-h-[60vh] overflow-y-auto bg-white custom-scrollbar">
+                <div class="space-y-6">
+                    
+                    <div class="flex items-start gap-5 p-2 rounded-2xl hover:bg-slate-50 transition-colors group">
+                        <div class="bg-slate-900 text-white font-black px-3 py-2 rounded-xl text-xs shadow-lg group-hover:bg-orange-500 transition-colors">01</div>
+                        <div>
+                            <h4 class="font-black text-slate-900 uppercase tracking-tighter text-sm">Januari</h4>
+                            <p class="text-slate-500 text-xs font-bold mt-1 tracking-wide">10–11, 16–17, 17–18, 24–25, 31–1</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-5 p-2 rounded-2xl hover:bg-slate-50 transition-colors group">
+                        <div class="bg-slate-900 text-white font-black px-3 py-2 rounded-xl text-xs shadow-lg group-hover:bg-orange-500 transition-colors">02</div>
+                        <div>
+                            <h4 class="font-black text-slate-900 uppercase tracking-tighter text-sm">Februari</h4>
+                            <p class="text-slate-500 text-xs font-bold mt-1 tracking-wide">7–8, 14–15, 15–16, 16–17, 21–22, 28–1</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-5 bg-orange-50 p-5 rounded-[1.5rem] border border-orange-100 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-orange-200/50 px-4 py-1 rounded-bl-2xl text-[9px] font-black uppercase tracking-widest text-orange-700">High Season</div>
+                        
+                        <div class="bg-orange-500 text-white font-black px-3 py-2 rounded-xl text-xs shadow-lg shadow-orange-200">03</div>
+                        <div>
+                            <h4 class="font-black text-orange-700 uppercase tracking-tighter text-sm flex items-center gap-2">
+                                Maret 
+                                <span class="text-[9px] bg-white text-orange-600 px-2 py-0.5 rounded-full font-black border border-orange-200">EDISI LEBARAN</span>
+                            </h4>
+                            <p class="text-orange-600 text-xs font-black mt-1 tracking-wide">7–8, 14–15</p>
+                            <p class="text-[10px] text-orange-400 mt-2 font-bold italic">*Akhir bulan buka setiap hari (Libur Panjang)</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-5 p-2 rounded-2xl hover:bg-slate-50 transition-colors group">
+                        <div class="bg-slate-900 text-white font-black px-3 py-2 rounded-xl text-xs shadow-lg group-hover:bg-orange-500 transition-colors">04</div>
+                        <div>
+                            <h4 class="font-black text-slate-900 uppercase tracking-tighter text-sm">April</h4>
+                            <p class="text-slate-500 text-xs font-bold mt-1 tracking-wide">3–4, 4–5, 11–12, 18–19, 25–26</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 p-4 rounded-2xl bg-slate-50 border border-dashed border-slate-200 text-center">
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">📅 Update: Slot Terbatas Setiap Minggunya</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="p-6 bg-slate-50 border-t border-slate-100">
+                <a href="https://wa.me/6281225147256?text=Halo%20July%20Trip!%20Gue%20liat%20jadwal%20trip%20di%20web,%20mau%20tanya%20slot%20kosong%20dong." 
+                target="_blank" 
+                class="flex items-center justify-center gap-3 w-full bg-green-500 hover:bg-slate-900 text-white text-center py-5 rounded-[1.5rem] font-black text-xs uppercase tracking-widest transition-all duration-300 shadow-xl shadow-green-100 active:scale-95">
+                    <span class="text-xl">📲</span> Tanya Slot via WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
